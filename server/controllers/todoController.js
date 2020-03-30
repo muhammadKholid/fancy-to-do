@@ -3,10 +3,15 @@ const { Todo } = require('../models');
 class Controller {
   static addTodo(req, res) {
     const addedData = req.body;
-    Todo.create(addedData)
+    Todo.create({
+      title: addedData.title,
+      descriptions: addedData.descriptions,
+      status: addedData.status,
+      due_date: addedData.due_date,
+    })
       .then((data) => {
         console.log(data);
-        res.status(201).json({ data });
+        res.status(201).json({ data, message: 'Berhasil menambahkan data' });
       })
       .catch((err) => {
         if (err.errors[0].message) {
@@ -45,7 +50,15 @@ class Controller {
   static editTodo(req, res) {
     const editedData = req.body;
     const id = req.params.id;
-    Todo.update(editedData, { where: { id: id } })
+    Todo.update(
+      {
+        title: editedData.title,
+        descriptions: editedData.descriptions,
+        status: editedData.status,
+        due_date: editedData.due_date,
+      },
+      { where: { id: id } }
+    )
       .then((data) => {
         if (data == 0) {
           res.status(404).json({ message: 'Not found' });
