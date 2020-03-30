@@ -10,7 +10,7 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
 
 ## Docs 
 
-- ____POST/todos_:
+1. ____POST/todos_:
 
 - Request header:
 
@@ -19,7 +19,7 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
   "Content-Type": "application/json"
 }
 ```
--Request body:
+- Request body:
 
 ```javascript
 {
@@ -28,7 +28,7 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
   "due_date":"2020-03-01"
 }
 ```
--Response:
+- Response:
 
 ```javascript
 {
@@ -40,9 +40,9 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
 ```
 
 
-- _GET/todos_:
+2. _GET/todos_:
 
--Response:
+- Response:
 
 **Success**
 ```javascript
@@ -59,9 +59,9 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
 ```
 
 
-- _GET/todos/:id_:
+3. _GET/todos/:id_:
 
--Response:
+- Response:
 
 **Success**
 ```javascript
@@ -78,9 +78,9 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
 ```
 
 
-- _PUT/todos/:id_:
+4. _PUT/todos/:id_:
 
--Response:
+- Response:
 
 **Success**
 ```javascript
@@ -97,9 +97,9 @@ Whether it's for work a side-project or even the next family vacation, Fancy to-
 ```
 
 
-- DELETE/todos/:id_:
+5. DELETE/todos/:id_:
 
--Response:
+- Response:
 
 **Success**
 ```javascript
