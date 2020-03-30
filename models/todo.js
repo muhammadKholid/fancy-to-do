@@ -11,9 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: {
         type: DataTypes.STRING,
-        allowNul: false,
+        allowNull: false,
         validate: {
-          notNull: true,
           notEmpty: {
             msg: 'title tidak boleh kosong',
           },
@@ -23,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notNull: true,
           notEmpty: {
             msg: 'description tidak boleh kosong',
           },
@@ -33,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         validate: {
-          notNull: true,
           notEmpty: {
             msg: 'status tidak boleh kosong',
           },
@@ -43,7 +40,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
-          notNull: true,
           notEmpty: {
             msg: 'Date tidak boleh kosong',
           },
