@@ -2,9 +2,10 @@ const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const checkPass = require('../helpers/checkPass');
+const axios = require('axios');
 
 class Controller {
-  static register(req, res) {
+  static register(req, res, next) {
     const newUser = req.body;
     console.log(newUser);
     User.create({
@@ -17,14 +18,16 @@ class Controller {
       })
       .catch((err) => {
         if (err.errors[0].message) {
-          res.status(400).json({ message: 'Bad request' });
+          next(err);
+          // res.status(400).json({ message: 'Bad request' });
         } else {
-          res.status(500).json({ message: 'Internal server error' });
+          next(err);
+          // res.status(500).json({ message: 'Internal server error' });
         }
       });
   }
 
-  static login(req, res) {
+  static login(req, res, next) {
     const findUser = req.body;
     User.findOne({
       where: {
@@ -34,6 +37,7 @@ class Controller {
       .then((data) => {
         if (!data) {
           res.status(404).json({ message: 'data not found' });
+          // throw new Error('Not found');
         } else {
           const check = checkPass(findUser.password, data.password);
           console.log(check);
@@ -47,13 +51,26 @@ class Controller {
             );
             res.status(200).json({ message: 'Anda berhasil login', token: token });
           } else {
+            // throw new Error('Bad request');
             res.status(400).json({ message: 'Bad request' });
-            // throw createError(400);
           }
         }
       })
       .catch((err) => {
-        // next(err);
+        next(err);
+        // res.status(500).json({ message: 'Internal server error' });
+      });
+  }
+
+  static getQuote(req, res) {
+    axios({
+      method: 'GET',
+      url: 'https://quotes.rest/qod',
+    })
+      .then(({ data }) => {
+        console.log(data.contents.quotes);
+      })
+      .catch((err) => {
         res.status(500).json({ message: 'Internal server error' });
       });
   }

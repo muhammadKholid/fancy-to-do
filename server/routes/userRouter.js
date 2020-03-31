@@ -7,5 +7,7 @@ const router = express.Router();
 router.post('/register', userController.register);
 //login
 router.post('/login', userController.login);
+//quotes api
+router.get('/quotes', userController.getQuote);
 
 module.exports = router;
