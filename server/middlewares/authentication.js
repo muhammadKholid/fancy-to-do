@@ -8,7 +8,7 @@ const authentication = function (req, res, next) {
     if (!token) {
       res.status(404).json({ message: 'Token not found' });
     } else {
-      const decoded = jwt.verify(token, 'rahasia illahi');
+      const decoded = jwt.verify(token, process.env.JWTSECRETS);
       console.log(decoded);
       req.userId = decoded.userId;
       next();

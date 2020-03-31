@@ -47,7 +47,7 @@ class Controller {
                 userId: data.id,
                 username: data.username,
               },
-              'rahasia illahi'
+              process.env.JWTSECRETS
             );
             res.status(200).json({ message: 'Anda berhasil login', token: token });
           } else {
