@@ -62,16 +62,31 @@ class Controller {
       });
   }
 
-  static getQuote(req, res) {
+  static getQuote(req, res, next) {
     axios({
       method: 'GET',
       url: 'https://quotes.rest/qod',
     })
       .then(({ data }) => {
-        console.log(data.contents.quotes);
+        res.status(200).json(data.contents.quotes);
       })
       .catch((err) => {
-        res.status(500).json({ message: 'Internal server error' });
+        next(err);
+        // res.status(500).json({ message: 'Internal server error' });
+      });
+  }
+
+  static getHolidays(req, res, next) {
+    axios({
+      method: 'GET',
+      url: `https://calendarific.com/api/v2/holidays?&api_key=${process.env.API_KEY_CALENDAR}&country=ID&year=2020`,
+    })
+      .then(({ data }) => {
+        res.status(200).json(data.response.holidays);
+      })
+      .catch((err) => {
+        next(err);
+        // res.status(500).json({ message: 'Internal server error' });
       });
   }
 }

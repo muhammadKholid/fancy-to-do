@@ -9,5 +9,7 @@ router.post('/register', userController.register);
 router.post('/login', userController.login);
 //quotes api
 router.get('/quotes', userController.getQuote);
+//holidays calendar api
+router.get('/holidays', userController.getHolidays);
 
 module.exports = router;
