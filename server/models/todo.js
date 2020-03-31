@@ -45,11 +45,21 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: 'Date tidak boleh kosong',
+          },
+        },
+      },
     },
     { sequelize }
   );
   Todo.associate = function (models) {
     // associations can be defined here
+    Todo.belongsTo(models.User);
   };
   return Todo;
 };
