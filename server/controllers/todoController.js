@@ -25,7 +25,11 @@ class Controller {
   }
 
   static getTodo(req, res) {
-    Todo.findAll()
+    Todo.findAll({
+      where: {
+        UserId: req.userId,
+      },
+    })
       .then((data) => {
         res.status(200).json({ data: data });
       })
