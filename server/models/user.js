@@ -44,21 +44,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      sequelize,
       hooks: {
-        beforeCreate: (User, options) => {
-          if (User.password) {
-            bcrypt
-              .hash(User.password, 10)
-              .then((hashed) => {
-                User.password = hashed;
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }
+        afterValidate: (User, options) => {
+          console.log('masuk hooks');
+          console.log(User.password);
+          const salt = bcrypt.genSaltSync(10);
+          const hash = bcrypt.hashSync(User.password, salt);
+          User.password = hash;
         },
       },
+      sequelize,
     }
   );
   User.associate = function (models) {

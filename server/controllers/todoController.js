@@ -2,12 +2,14 @@ const { Todo } = require('../models');
 
 class Controller {
   static addTodo(req, res) {
+    console.log(req.userId);
     const addedData = req.body;
     Todo.create({
       title: addedData.title,
       descriptions: addedData.descriptions,
       status: addedData.status,
       due_date: addedData.due_date,
+      UserId: req.userId,
     })
       .then((data) => {
         console.log(data);
