@@ -7,7 +7,8 @@ const router = express.Router();
 //add list todo
 router.post('/', todoController.addTodo);
 //get all todo list
-router.get('/', authorization, todoController.getTodo);
+router.get('/', todoController.getTodo);
+// router.get('/', authorization, todoController.getTodo);
 //get list based on the id
 router.get('/:id', authorization, todoController.getSpecificTodo);
 //update data

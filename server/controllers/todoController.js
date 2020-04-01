@@ -18,26 +18,24 @@ class Controller {
       .catch((err) => {
         if (err.errors[0].message) {
           next(err);
-          // res.status(400).json({ message: err.errors[0].message });
         } else {
           next(err);
-          // res.status(500).json({ message: 'Internal server error' });
         }
       });
   }
 
   static getTodo(req, res, next) {
-    Todo.findAll({
-      where: {
-        UserId: req.userId,
-      },
-    })
+    // {
+    //       where: {
+    //         UserId: req.userId,
+    //       },
+    //     }
+    Todo.findAll()
       .then((data) => {
         res.status(200).json({ data: data });
       })
       .catch((err) => {
         next(err);
-        // res.status(500).json({ message: 'Internal server error' });
       });
   }
 
@@ -48,13 +46,11 @@ class Controller {
         if (data) {
           res.status(200).json({ data });
         } else {
-          // throw new Error('Not found');
           res.status(404).json({ message: 'Not found' });
         }
       })
       .catch((err) => {
         next(err);
-        // res.status(500).json({ message: 'Inyernal server error' });
       });
   }
 
@@ -81,10 +77,8 @@ class Controller {
       .catch((err) => {
         if (err.errors[0].message) {
           next(err);
-          // res.status(400).json({ message: err.errors[0].message });
         } else {
           next(err);
-          // res.status(500).json({ message: 'Internal server error' });
         }
       });
   }
@@ -94,7 +88,6 @@ class Controller {
     Todo.destroy({ where: { id: id } })
       .then((data) => {
         if (data == 0) {
-          // throw new Error('Not found');
           res.status(404).json({ message: 'Not found' });
         } else {
           res.status(200).json({ message: 'Berhasil menghapus data' });
@@ -102,7 +95,6 @@ class Controller {
       })
       .catch((err) => {
         next(err);
-        // res.status(500).json({ message: 'Internal server error' });
       });
   }
 }

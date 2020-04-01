@@ -19,16 +19,15 @@ class Controller {
       .catch((err) => {
         if (err.errors[0].message) {
           next(err);
-          // res.status(400).json({ message: 'Bad request' });
         } else {
           next(err);
-          // res.status(500).json({ message: 'Internal server error' });
         }
       });
   }
 
   static login(req, res, next) {
     const findUser = req.body;
+    console.log(findUser);
     User.findOne({
       where: {
         username: findUser.username,
@@ -37,7 +36,6 @@ class Controller {
       .then((data) => {
         if (!data) {
           res.status(404).json({ message: 'data not found' });
-          // throw new Error('Not found');
         } else {
           const check = checkPass(findUser.password, data.password);
           console.log(check);
@@ -51,14 +49,12 @@ class Controller {
             );
             res.status(200).json({ message: 'Anda berhasil login', token: token });
           } else {
-            // throw new Error('Bad request');
             res.status(400).json({ message: 'Bad request' });
           }
         }
       })
       .catch((err) => {
         next(err);
-        // res.status(500).json({ message: 'Internal server error' });
       });
   }
 
@@ -72,7 +68,6 @@ class Controller {
       })
       .catch((err) => {
         next(err);
-        // res.status(500).json({ message: 'Internal server error' });
       });
   }
 
@@ -86,7 +81,6 @@ class Controller {
       })
       .catch((err) => {
         next(err);
-        // res.status(500).json({ message: 'Internal server error' });
       });
   }
 }
