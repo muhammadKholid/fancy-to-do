@@ -2,9 +2,10 @@ const { Todo } = require('../models');
 
 const authorization = function (req, res, next) {
   console.log(req.params.id);
+  //terjadi error disini
   Todo.findOne({
     where: {
-      id: req.params.id,
+      UserId: req.userId,
     },
   })
     .then((data) => {

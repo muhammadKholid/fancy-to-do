@@ -1,12 +1,4 @@
 $(document).ready(function () {
-  // let check = false;
-  // if (check) {
-  //   login();
-  // } else {
-  //   getStarted();
-  // }
-  //
-
   $('#toogle-get-started').click(function () {
     check = true;
   });
@@ -45,7 +37,7 @@ $(document).ready(function () {
       },
     })
       .done(function (result) {
-        console.log(result.data);
+        $('#list-table').empty();
         let counter = 1;
         for (let i = 0; i < result.data.length; i++) {
           data = result.data[i];
@@ -56,7 +48,8 @@ $(document).ready(function () {
                 <td>${data.descriptions}</td>
                 <td>${data.status}</td>
                 <td>${data.due_date}</td>
-                <td>${data.due_date}</td>
+                <td><button id="delete" class="button is-danger" value="${data.id}"> Delete </button>
+                </td>
           </tr>
           `);
           counter++;
@@ -67,12 +60,27 @@ $(document).ready(function () {
       });
   }
 
+  // DELETE TODO
+  $('.button is-danger').click(() => {
+    const id = $(this).val();
+    console.log(id);
+    $.ajax({
+      type: 'DELETE',
+      url: 'http://localhost:3000/todos/' + id,
+      headers: {
+        token: localStorage.getItem('token'),
+      },
+    }).done(() => {
+      todo();
+    });
+  });
+
   //add data
   $('#add-todo').submit((e) => {
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     const title = $('#title-add').val();
-    const descriptions = $('#descriptions-add').val();
+    let descriptions = $('#descriptions-add').val();
     const status = $('#status-add').val();
     const due_date = $('#due_date-add').val();
 
@@ -83,7 +91,7 @@ $(document).ready(function () {
       due_date,
     };
     $.ajax({
-      url: 'http://localhost:3000/todos/',
+      url: 'http://localhost:3000/todos',
       type: 'POST',
       data,
       headers: {
@@ -91,6 +99,7 @@ $(document).ready(function () {
       },
     })
       .done((output) => {
+        console.log(output.message);
         $('#add-todo')[0].reset();
         todo();
       })

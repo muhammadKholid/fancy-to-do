@@ -41,7 +41,9 @@
         </div>
       </div>
     </nav>
-<!-- section login -->
+
+    <!-- page 1 biru -->
+
     <section class="hero is-link is-fullheight-with-navbar">
       <div class="hero-body columns">
         <div class="container column has-text-centered">
@@ -49,7 +51,9 @@
             Welcome!
           </p>
         </div>
+
 <!-- form register -->
+
         <div id="register" class="container column">
           <h1 class="title">Register</h1>
           <form id="register">
@@ -97,7 +101,9 @@
             
           </form>
         </div>
+
 <!-- form login -->
+
         <div id="login" class="container column">
           <h1 class="title">Login</h1>
           <form id="login">
@@ -136,13 +142,18 @@
       </div>
     </section>
 
-<!-- section table -->
-    <section class="hero is-success is-fullheight">
+    <!-- page 2 hijau -->
+<!-- section table todo -->
+
+    <section id="section-2" class="hero is-success is-fullheight">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
             Your Todo List
           </h1>
+
+          <!-- table content -->
+
           <div class="table-container">
             <table class="table is-bordered">
               <thead>
@@ -159,255 +170,121 @@
               </tbody>
             </table>
           </div>
+
+          <button class="button is-warning" id="toogle-add-todo" data-target="#add-modal" type="submit"> Add your todo list</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- page 3 black -->
+
+    <section id="section-3" class="hero is-dark is-fullheight">
+      <div class="hero-body">
+
+
+        <!-- add todoList -->
+
+        <div class="container">
+          
+         <h1 class="title">
+           Add your new Todo list!
+         </h1>
+         <form id="add-todo">
+
+         <div class="field">
+           <div class="control">
+             <label for="title">Title</label>
+             <input class="input is-primary" type="text" name="title" id="title-add" placeholder="What's your plan?">
+           </div>
+         </div>
+
+         <div class="field">
+           <div class="control">
+             <label for="descriptions">Descriptions</label>
+             <input class="input is-primary" type="text" name="descriptions" id="descriptions-add" placeholder="Detail of your plan ...">
+           </div>
+         </div>
+
+         <div class="field">
+           <div class="control">
+             <label for="status">Status</label>
+             <input class="input is-primary" type="text" name="status" id="status-add" placeholder="false">
+           </div>
+         </div>
+
+         <div class="field">
+           <div class="control">
+             <label for="due_date">Deadline</label>
+             <input class="input is-primary" type="date" name="due_date" id="due_date-add" placeholder="2020-02-20">
+           </div>
+         </div>
+          
+             <button class="button is-warning" type="submit" value="submit">
+               <span>Add Todo</span>
+             </button>
+
+         </form>
         </div>
       </div>
     </section>
-    <!--<section class="hero is-success is-fullheight">-->
-    <!--  <!-1- Hero head: will stick at the top -1->-->
-    <!--  <div class="hero-head">-->
-    <!--    <header class="navbar">-->
-    <!--      <div class="container">-->
-    <!--        <div class="navbar-brand">-->
-    <!--          <a class="navbar-item">-->
 
-    <!--            <h1 class="title">-->
-    <!--              Fancy Todo List-->
-    <!--            </h1>-->
+    
+    <!-- page 4 red -->
 
-    <!--          </a>-->
-    <!--        </div>-->
-
-    <!--        <div id="navbarMenuHeroC" class="navbar-menu">-->
-    <!--          <div class="navbar-end">-->
-    <!--            <a class="navbar-item">-->
-    <!--              <p>Make your holiday more productive!</p>-->
-    <!--            </a>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </header>-->
-    <!--  </div>-->
+    <section class="hero is-red is-fullheight">
+      <div class="hero-body">
 
 
+        <!-- edit todoList -->
 
-    <!--  <!-1-half-1->-->
-    <!--  <div class="columns is-multiline is-mobile">-->
-    <!--    <div class="column is-half">-->
-    <!--      <!-1-Login-1->-->
-    <!--      <div class="hero-body">-->
-    <!--        <div class="container has-text-centered">-->
-    <!--          <form id="login">-->
-
-    <!--          <h1 class="title">Login</h1>-->
-    <!--            <a class="navbar-item">-->
-    <!--              <div class="field">-->
-    <!--                <div class="control">-->
-    <!--                  <label>Username</label>-->
-    <!--                  <input class="input is-primary" type="text" name="username" id="userLogin"  placeholder="Your username">-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </a>-->
-
-    <!--            <a class="navbar-item">-->
-    <!--              <div class="field">-->
-    <!--                <div class="control">-->
-    <!--                  <label>Password</label>-->
-    <!--                  <input class="input is-primary" type="password" name="password" id="passLogin" placeholder="*****">-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </a>-->
-
-    <!--            <span class="navbar-item">-->
-    <!--              <button class="button is-success is-inverted" type="submit" value="submit">-->
-    <!--                <span>Login</span>-->
-    <!--              </button>-->
-    <!--              <p>Belum punya akun? <a href="" id="toogle-register">Sign in</a></p>-->
-    <!--            </span>-->
-    <!--          </form>-->
-
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-
-    <!--    <div class="column is-half">-->
-    <!--      <div id="home" class="hero-body">-->
-    <!--        <div class="container has-text-centered">-->
-    <!--          <h1 class="title">-->
-    <!--            Your Todo List is waiting!-->
-    <!--          </h1>-->
-    <!--          <h2 class="subtitle">-->
-    <!--            What's your plan?-->
-    <!--          </h2>-->
-    <!--          <button type="submit" class="button is-success is-inverted" id="toogle-get-started">Get Started</button>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </div>-->
-
-
-    <!--  <!-1- Register -1->-->
-    <!--   <div class="hero-body">--> 
-    <!--     <div class="container has-text-centered">--> 
-
-    <!--       <form id="register">--> 
-
-    <!--         <a class="navbar-item">--> 
-    <!--           <div class="field">--> 
-    <!--             <div class="control">--> 
-    <!--               <label>Username</label>--> 
-    <!--               <input class="input is-primary" type="text" name="username" id="username" placeholder="Your username">--> 
-    <!--             </div>--> 
-    <!--           </div>--> 
-    <!--         </a>--> 
-
-    <!--         <a class="navbar-item">--> 
-    <!--           <div class="field">--> 
-    <!--             <div class="control">--> 
-    <!--               <label>Email</label>--> 
-    <!--               <input class="input is-primary" type="text" name="email" id="email" placeholder="blabla@bla.com">--> 
-    <!--             </div>--> 
-    <!--           </div>--> 
-    <!--         </a>--> 
-
-    <!--         <a class="navbar-item" >--> 
-    <!--           <div class="field">--> 
-    <!--             <div class="control">--> 
-    <!--               <label>Password</label>--> 
-    <!--               <input class="input is-primary" type="password" name="password" id="password" placeholder="*****">--> 
-    <!--             </div>--> 
-    <!--           </div>--> 
-    <!--         </a>--> 
-
-    <!--         <span class="navbar-item">--> 
-    <!--           <button class="button is-success is-inverted" type="submit" value="submit">--> 
-    <!--             <span>Sign in</span>--> 
-    <!--           </button>--> 
-    <!--         </span>--> 
-    <!--       </form>--> 
-
-    <!--     </div>--> 
-    <!--   </div>--> 
-    <!--</section>--> 
-
-    <!--  <section class="hero is-link is-fullheight">-->
-    <!--    <div class="hero-body">-->
-    <!--      <div class="container">-->
-
-    <!--      <h1 class="title">-->
-    <!--        Your Todo List is waiting!-->
-    <!--      </h1>-->
-    <!--      <h2 class="subtitle">-->
-    <!--        What's your plan?-->
-    <!--      </h2>-->
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--          <tr>-->
-    <!--            <th>No.</th>-->
-    <!--            <th>Title</th>-->
-    <!--            <th>Descriptions</th>-->
-    <!--            <th>status</th>-->
-    <!--            <th>Deadline</th>-->
-    <!--            <th>Options</th>-->
-    <!--          </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody id="list-table">-->
-
-    <!--        </tbody>-->
-
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </section>-->
-
-
-    <!--  <!-1- Add todo -1->-->
-    <!--  <div id="get-todo" class="hero-body">-->
-    <!--    <div class="container has-text-centered">-->
-    <!--      <h1 class="title">-->
-    <!--        Add your new Todo list!-->
-    <!--      </h1>-->
-    <!--      <form id="add-todo">-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="title">Title</label>-->
-    <!--          <input class="input is-primary" type="text" name="title-add" id="title-add" placeholder="What's your plan?">-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="descriptions">Descriptions</label>-->
-    <!--          <input class="input is-primary" type="text" name="descriptions" id="descriptions-add" placeholder="Detail of your plan ...">-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="status">Status</label>-->
-    <!--          <input class="input is-primary" type="text" name="status" id="status-add" placeholder="false">-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="due_date">Deadline</label>-->
-    <!--          <input class="input is-primary" type="date" name="due_date" id="due_date-add" placeholder="2020-02-20">-->
-    <!--        </div>-->
-    <!--      </div>-->
+        <div class="container">
           
-    <!--        <span class="navbar-item">-->
-    <!--          <button class="button is-success is-inverted" type="submit" value="submit">-->
-    <!--            <span>Add Todo</span>-->
-    <!--          </button>-->
-    <!--        </span>-->
+         <h1 class="title">
+           Replanning your todo list?
+         </h1>
+         <form id="edit-todo">
 
-    <!--      </form>-->
-    <!--    </div>-->
-    <!--  </div>-->
+         <div class="field">
+           <div class="control">
+             <label for="title">Title</label>
+             <input class="input is-primary" type="text" name="title" id="title-edit" placeholder="What's your plan?">
+           </div>
+         </div>
+
+         <div class="field">
+           <div class="control">
+             <label for="descriptions">Descriptions</label>
+             <input class="input is-primary" type="text" name="descriptions" id="descriptions-edit" placeholder="Detail of your plan ...">
+           </div>
+         </div>
+
+         <div class="field">
+           <div class="control">
+             <label for="status">Status</label>
+             <input class="input is-primary" type="text" name="status" id="status-edit" placeholder="false">
+           </div>
+         </div>
+
+         <div class="field">
+           <div class="control">
+             <label for="due_date">Deadline</label>
+             <input class="input is-primary" type="date" name="due_date" id="due_date-edit" placeholder="2020-02-20">
+           </div>
+         </div>
+          
+             <button class="button is-success" type="submit" value="submit">
+               <span>Edit Todo</span>
+             </button>
+
+         </form>
+        </div>
+      </div>
+    </section>
 
     <!--  <!-1-Edit todo-1->-->
     <!--  <div id="get-todo" class="hero-body">-->
     <!--    <div class="container has-text-centered">-->
-    <!--      <h1 class="title">-->
-    <!--        Replanning your todo list?-->
-    <!--      </h1>-->
-    <!--      <form id="edit-todo">-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="title">Title</label>-->
-    <!--          <input class="input is-primary" type="text" name="title" id="title-edit" placeholder="What's your plan?">-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="descriptions">Descriptions</label>-->
-    <!--          <input class="input is-primary" type="text" name="descriptions" id="descriptions-edit" placeholder="Detail of your plan ...">-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="status">Status</label>-->
-    <!--          <input class="input is-primary" type="text" name="status" id="status-edit" placeholder="false">-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="field">-->
-    <!--        <div class="control">-->
-    <!--          <label for="due_date">Deadline</label>-->
-    <!--          <input class="input is-primary" type="date" name="due_date" id="due_date-edit" placeholder="2020-02-20">-->
-    <!--        </div>-->
-    <!--      </div>-->
-          
-    <!--        <span class="navbar-item">-->
-    <!--          <button class="button is-success is-inverted" type="submit" value="submit">-->
-    <!--            <span>Edit Todo</span>-->
-    <!--          </button>-->
-    <!--        </span>-->
-
-    <!--      </form>-->
     <!--    </div>-->
     <!--  </div>-->
 
