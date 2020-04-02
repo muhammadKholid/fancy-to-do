@@ -29,12 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: 'status tidak boleh kosong',
-          },
-        },
+        defaultValue: false,
       },
       due_date: {
         type: DataTypes.DATE,

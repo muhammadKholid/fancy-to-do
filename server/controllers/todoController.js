@@ -55,6 +55,7 @@ class Controller {
   static editTodo(req, res, next) {
     const editedData = req.body;
     const id = req.params.id;
+    console.log(editedData);
     Todo.update(
       {
         title: editedData.title,
