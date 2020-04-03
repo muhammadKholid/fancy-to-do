@@ -6,6 +6,7 @@
     <title>Fancy TODO!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta name="google-signin-client_id" content="646995680985-b9f1s7g1a14skleu8riaoophrdecgr2r.apps.googleusercontent.com">
   </head>
 
   <body class="has-navbar-fixed-top">
@@ -34,7 +35,13 @@
                 <strong>Sign up</strong>
               </button>
               <button id="logout-btn" class="button is-light">
-                Log out
+              <a href="#" onclick="signOut();">Sign out</a>
+              </button>
+              <button id="Holidays-btn" onclick="getHolidays()" class="button is-light">
+                Check holidays
+              </button>
+              <button id="back-btn"  class="button is-light">
+                back
               </button>
             </div>
           </div>
@@ -136,6 +143,12 @@
             </button>
             </p>
           </div>
+
+          <div class="field">
+            <p class="control">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </p>
+          </div>
             
           <div class="field">
             <p class="control">Belum punya akun? <strong>Silahkan Sign up!</strong></p>
@@ -155,7 +168,7 @@
           <h1 class="title">
             Your Todo List
           </h1>
-
+          <p id="message"></p>
           <!-- table content -->
 
           <div class="table-container">
@@ -272,14 +285,30 @@
       </div>
     </section>
 
-    <!--  <!-1-Edit todo-1->-->
-    <!--  <div id="get-todo" class="hero-body">-->
-    <!--    <div class="container has-text-centered">-->
-    <!--    </div>-->
-    <!--  </div>-->
+<section id="section-5" class="hero is-dark is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Holiday day</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody id="list-holidays">
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</section>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./main.js"></script>
+<!-- script tag -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./main.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
   </body>
 </html>
