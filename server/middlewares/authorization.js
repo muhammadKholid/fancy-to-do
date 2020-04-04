@@ -8,16 +8,12 @@ const authorization = function (req, res, next) {
   })
     .then((data) => {
       if (!data) {
-        throw new Error({
-          message: 'User not found',
-        });
+        throw new Error('User not found');
       } else {
         if (data.UserId == req.userId) {
           next();
         } else {
-          throw new Error({
-            message: 'Access denied',
-          });
+          throw new Error('Access denied');
         }
       }
     })

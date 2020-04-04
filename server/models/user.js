@@ -46,8 +46,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         afterValidate: (User, options) => {
-          console.log('masuk hooks');
-          console.log(User.password);
           const salt = bcrypt.genSaltSync(10);
           const hash = bcrypt.hashSync(User.password, salt);
           User.password = hash;

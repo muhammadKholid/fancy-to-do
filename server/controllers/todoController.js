@@ -15,7 +15,7 @@ class Controller {
       })
       .catch((err) => {
         if (err.errors[0].message) {
-          next(err.errors[0]);
+          next(err.errors[0].message);
         } else {
           next(err);
         }
@@ -43,7 +43,7 @@ class Controller {
         if (data) {
           res.status(200).json({ data });
         } else {
-          throw new Error({ message: 'Data not found' });
+          throw new Error('Data not found');
         }
       })
       .catch((err) => {
@@ -66,7 +66,7 @@ class Controller {
     )
       .then((data) => {
         if (data == 0) {
-          throw new Error({ message: 'Data not found' });
+          throw new Error('Data not found');
         } else {
           res.status(200).json({ message: 'Berhasil mengupadate data' });
         }
@@ -85,7 +85,7 @@ class Controller {
     Todo.destroy({ where: { id: id } })
       .then((data) => {
         if (data == 0) {
-          throw new Error({ message: 'Data not found' });
+          throw new Error('Data not found');
         } else {
           res.status(200).json({ message: 'Berhasil menghapus data' });
         }

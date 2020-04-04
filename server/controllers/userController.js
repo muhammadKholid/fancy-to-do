@@ -19,8 +19,8 @@ class Controller {
         res.status(201).json({ message: 'Berhasil terdaftar', data: data });
       })
       .catch((err) => {
-        if (err.errors[0]) {
-          next(err);
+        if (err.errors[0].message) {
+          next(err.errors[0].message);
         } else {
           next(err);
         }
@@ -37,7 +37,7 @@ class Controller {
     })
       .then((data) => {
         if (!data) {
-          throw new Error({ message: 'User not found' });
+          throw new Error('User not found');
         } else {
           const check = checkPass(findUser.password, data.password);
           if (check) {
@@ -50,7 +50,7 @@ class Controller {
             );
             res.status(200).json({ message: 'Anda berhasil login', token: token, data: data });
           } else {
-            throw new Error({ message: 'Wrong password' });
+            throw new Error('Wrong password');
           }
         }
       })
@@ -80,7 +80,7 @@ class Controller {
       })
       .then((userData) => {
         if (!userData) {
-          throw new Error({ message: 'User not found' });
+          throw new Error('User not found');
         } else {
           console.log(newData.password, userData.password);
           const check = checkPass(newData.password, userData.password);
@@ -94,7 +94,7 @@ class Controller {
             );
             res.status(200).json({ message: 'Anda berhasil login', token: token });
           } else {
-            throw new Error({ message: 'wrong password' });
+            throw new Error('wrong password');
           }
         }
       })
