@@ -14,11 +14,7 @@ class Controller {
         res.status(201).json({ data, message: 'Berhasil menambahkan data' });
       })
       .catch((err) => {
-        if (err.errors[0].message) {
-          next(err.errors[0].message);
-        } else {
-          next(err);
-        }
+        next(err);
       });
   }
 

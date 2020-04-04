@@ -19,11 +19,7 @@ class Controller {
         res.status(201).json({ message: 'Berhasil terdaftar', data: data });
       })
       .catch((err) => {
-        if (err.errors[0].message) {
-          next(err.errors[0].message);
-        } else {
-          next(err);
-        }
+        next(err);
       });
   }
 

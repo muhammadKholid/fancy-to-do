@@ -41,7 +41,7 @@ function holidays() {
 }
 //logout
 function logout() {
-  localStorage.removeItem('token');
+  localStorage.clear('token');
   $('#register').hide();
   $('#login').show();
   $('#section-1').show();
@@ -141,7 +141,9 @@ function todo(text) {
         counter++;
       }
     })
-    .fail(function (err) {});
+    .fail(function (err) {
+      console.log(err);
+    });
 }
 
 //show-holidays
@@ -194,7 +196,13 @@ $('#add-todo').submit((e) => {
       $('#add-todo')[0].reset();
       todo(output.message);
     })
-    .fail((err) => {});
+    .fail((err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.responseJSON.message,
+      });
+    });
 });
 
 //login
@@ -219,7 +227,11 @@ $('#login').submit(function (e) {
       todo();
     })
     .fail((err) => {
-      console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.responseJSON.message,
+      });
     });
 });
 
@@ -246,7 +258,11 @@ $('#register').submit(function (e) {
       login();
     })
     .fail((err) => {
-      console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.responseJSON.message,
+      });
     });
 });
 
@@ -286,9 +302,17 @@ function todoEditStatus(id) {
       headers: {
         token: localStorage.getItem('token'),
       },
-    }).done(() => {
-      todo();
-    });
+    })
+      .done(() => {
+        todo();
+      })
+      .fail((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.responseJSON.message,
+        });
+      });
   });
 }
 
@@ -331,7 +355,7 @@ function todoEdit(id) {
 
 //google sign in
 function onSignIn(googleUser) {
-  var id_token = googleUser.getAuthResponse().id_token;
+  const id_token = googleUser.getAuthResponse().id_token;
   $.ajax({
     type: 'POST',
     url: 'http://localhost:3000/todos/google-sign-in',
@@ -350,9 +374,9 @@ function onSignIn(googleUser) {
 
 //google log out
 function signOut() {
-  var auth2 = gapi.auth2.getAuthInstance();
+  const auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
     console.log('User signed out.');
-    localStorage.removeItem('token');
+    localStorage.clear('token');
   });
 }
