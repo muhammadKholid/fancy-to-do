@@ -68,7 +68,7 @@ class Controller {
         if (data == 0) {
           throw new Error({ message: 'Data not found' });
         } else {
-          res.status(200).json({ message: 'Berhasil mengubah data' });
+          res.status(200).json({ message: 'Berhasil mengupadate data' });
         }
       })
       .catch((err) => {

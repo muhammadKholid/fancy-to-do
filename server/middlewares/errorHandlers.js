@@ -1,4 +1,4 @@
-const errorHandler = function (err, req, res, next) {
+const errorHandler = (err, req, res, next) => {
   if (err.name == 'SequelizeValidationError') {
     res.status(400).json({ message: 'Bad request' });
   } else if (err.message.includes('token') || err.message.includes('password')) {

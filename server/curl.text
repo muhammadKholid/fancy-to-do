@@ -1,0 +1,14 @@
+//test login
+curl -d '{"username":"padulkemid","password":"padoel"}' -H 'Content-Type: application/json' -v http://localhost:3000/todos/login | jq '.'
+
+//test register
+curl -d '{"username":"padulkemid","password":"padoel","email":"padul@kemid.co.io"}' -H 'Content-Type: application/json' -v http://localhost:3000/todos/register | jq '.'
+
+//add todo
+curl -H "token:<token>" -d "title=<title>&descriptions=<description>&..." -v http://localhost:3000/todos | jq '.'
+
+//getall data
+curl -H "token:<token>" http://localhost:3000/todos/:<id> | jq '.'
+
+//update data
+curl -H "token:<token>" -d "title=<title>&descriptions=<description>&..." -X PUT http://localhost:3000/todos/<ID> | jq '.'

@@ -261,8 +261,8 @@ function delList(id) {
     headers: {
       token: localStorage.getItem('token'),
     },
-  }).done(() => {
-    todo();
+  }).done((response) => {
+    todo(response.message);
   });
 }
 
@@ -306,7 +306,7 @@ function todoEdit(id) {
     editData();
     $('#title-edit').val(response.data.title);
     $('#descriptions-edit').val(response.data.descriptions);
-    $('#due_date-edit').val(response.data.due_date);
+    $('#due_date-edit').val(response.data.due_date.slice(0, 10));
 
     $('#edit-todo').submit(function (e) {
       e.preventDefault();
