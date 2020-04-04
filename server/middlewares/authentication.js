@@ -1,21 +1,16 @@
 const jwt = require('jsonwebtoken');
 
-const authentication = function (req, res, next) {
+const authentication = (req, res, next) => {
   try {
-    console.log('try');
     const token = req.headers.token;
-    console.log(token);
     if (!token) {
-      res.status(404).json({ message: 'Token not found' });
+      res.status(403).json({ message: 'Token not found' });
     } else {
       const decoded = jwt.verify(token, process.env.JWTSECRETS);
-      console.log(decoded);
       req.userId = decoded.userId;
-      console.log(req.userId);
       next();
     }
   } catch {
-    console.log('catch');
     res.status(400).json({ message: 'Request bad error' });
   }
 };

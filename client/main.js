@@ -342,10 +342,11 @@ function onSignIn(googleUser) {
     },
     statusCode: {
       200: function (response) {
-        console.log(response);
-        // localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.token);
       },
     },
+  }).done(() => {
+    todo();
   });
 }
 
