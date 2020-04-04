@@ -26,6 +26,11 @@ $('#toogle-add-todo').click(() => {
 $('#back-btn').click(() => {
   todo();
 });
+//back to login in register
+$('#login-btn').click(() => {
+  login();
+  $('#button-register').show();
+});
 
 //see Holdays Calendar
 function holidays() {
@@ -38,12 +43,14 @@ function holidays() {
   $('#section-3').hide();
   $('#section-4').hide();
   $('#section-5').show();
+  $('#login-btn').hide();
 }
 //logout
 function logout() {
   localStorage.clear('token');
   $('#register').hide();
   $('#login').show();
+  $('#login-btn').hide();
   $('#section-1').show();
   $('#section-2').hide();
   $('#section-3').hide();
@@ -52,29 +59,36 @@ function logout() {
 }
 
 function login() {
+  $('#back-btn').hide();
   $('#login').show();
+  $('#login-btn').hide();
   $('#register').hide();
   $('#logout-btn').show();
   $('#section-2').hide();
   $('#section-3').hide();
   $('#section-4').hide();
   $('#section-5').hide();
+  $('#Holidays-btn').hide();
+  $('#logout-btn').hide();
 }
 
 function register() {
   $('#register').show();
   $('#login').hide();
+  $('#login-btn').show();
   $('#button-register').hide();
   $('#logout-btn').hide();
   $('#section-2').hide();
   $('#section-3').hide();
   $('#section-4').hide();
   $('#section-5').hide();
+  $('#Holidays-btn').hide();
 }
 
 function editData() {
   $('#register').hide();
   $('#login').hide();
+  $('#login-btn').hide();
   $('#button-register').hide();
   $('#logout-btn').hide();
   $('#section-1').hide();
@@ -87,6 +101,7 @@ function editData() {
 function addData() {
   $('#register').hide();
   $('#login').hide();
+  $('#login-btn').hide();
   $('#button-register').hide();
   $('#logout-btn').hide();
   $('#section-1').hide();
@@ -98,6 +113,7 @@ function addData() {
 // showing data
 function todo(text) {
   $('#login').hide();
+  $('#login-btn').hide();
   $('#register').hide();
   $('#button-register').hide();
   $('#logout-btn').show();
