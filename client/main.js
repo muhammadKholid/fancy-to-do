@@ -141,9 +141,7 @@ function todo(text) {
         counter++;
       }
     })
-    .fail(function (err) {
-      todo('Gagal menampilkan data');
-    });
+    .fail(function (err) {});
 }
 
 //show-holidays
@@ -196,9 +194,7 @@ $('#add-todo').submit((e) => {
       $('#add-todo')[0].reset();
       todo(output.message);
     })
-    .fail((err) => {
-      todo('Gagal menambah data');
-    });
+    .fail((err) => {});
 });
 
 //login
@@ -223,7 +219,7 @@ $('#login').submit(function (e) {
       todo();
     })
     .fail((err) => {
-      login();
+      console.log(err);
     });
 });
 
@@ -250,7 +246,7 @@ $('#register').submit(function (e) {
       login();
     })
     .fail((err) => {
-      register();
+      console.log(err);
     });
 });
 
@@ -263,13 +259,9 @@ function delList(id) {
     headers: {
       token: localStorage.getItem('token'),
     },
-  })
-    .done((response) => {
-      todo(response.message);
-    })
-    .fail((err) => {
-      todo('Gagal menghapus data');
-    });
+  }).done((response) => {
+    todo(response.message);
+  });
 }
 
 //fitur edit Status
@@ -294,13 +286,9 @@ function todoEditStatus(id) {
       headers: {
         token: localStorage.getItem('token'),
       },
-    })
-      .done(() => {
-        todo('todo list kamu telah selesai satu');
-      })
-      .fail((err) => {
-        todo('Gagal mengubah status todo list kamu');
-      });
+    }).done(() => {
+      todo();
+    });
   });
 }
 
@@ -333,14 +321,10 @@ function todoEdit(id) {
         headers: {
           token: localStorage.getItem('token'),
         },
-      })
-        .done((result) => {
-          $('#edit-todo')[0].reset();
-          todo(result.message);
-        })
-        .fail((err) => {
-          todo('Gagal mengubah todo list');
-        });
+      }).done((result) => {
+        $('#edit-todo')[0].reset();
+        todo(result.message);
+      });
     });
   });
 }

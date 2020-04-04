@@ -80,9 +80,8 @@ class Controller {
       })
       .then((userData) => {
         if (!userData) {
-          throw new Error('User not found');
+          return User.create(newData);
         } else {
-          console.log(newData.password, userData.password);
           const check = checkPass(newData.password, userData.password);
           if (check) {
             const token = jwt.sign(
@@ -97,6 +96,9 @@ class Controller {
             throw new Error('wrong password');
           }
         }
+      })
+      .then((responseResgistered) => {
+        res.status(201).json({ message: 'Berhasil terdaftar', data: responseResgistered });
       })
       .catch((err) => {
         next(err);
