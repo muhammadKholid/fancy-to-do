@@ -47,19 +47,32 @@ function holidays() {
 }
 //logout
 function logout() {
-  localStorage.clear('token');
-  $('#back-btn').hide();
-  $('#register').hide();
-  $('#button-register').show();
-  $('#Holidays-btn').hide();
-  $('#login').show();
-  $('#login-btn').hide();
-  $('#logout-btn').hide();
-  $('#section-1').show();
-  $('#section-2').hide();
-  $('#section-3').hide();
-  $('#section-4').hide();
-  $('#section-5').hide();
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes!',
+  }).then((result) => {
+    localStorage.clear('token');
+    $('#back-btn').hide();
+    $('#register').hide();
+    $('#button-register').show();
+    $('#Holidays-btn').hide();
+    $('#login').show();
+    $('#login-btn').hide();
+    $('#logout-btn').hide();
+    $('#section-1').show();
+    $('#section-2').hide();
+    $('#section-3').hide();
+    $('#section-4').hide();
+    $('#section-5').hide();
+    if (result.value) {
+      Swal.fire('Logout!', 'success');
+    }
+  });
 }
 
 function login() {
@@ -243,6 +256,9 @@ $('#login').submit(function (e) {
     dataType: 'json',
   })
     .done((result) => {
+      if (result) {
+        Swal.fire('Login!', 'success');
+      }
       localStorage.setItem('token', result.token);
       todo();
     })
@@ -336,7 +352,10 @@ function todoEditStatus(id) {
         token: localStorage.getItem('token'),
       },
     })
-      .done(() => {
+      .done((response) => {
+        if (response) {
+          Swal.fire('Data edited!', 'success');
+        }
         todo();
       })
       .fail((err) => {
@@ -400,7 +419,10 @@ function onSignIn(googleUser) {
         localStorage.setItem('token', response.token);
       },
     },
-  }).done(() => {
+  }).done((response) => {
+    if (response) {
+      Swal.fire('Login!', 'success');
+    }
     todo();
   });
 }
@@ -409,7 +431,6 @@ function onSignIn(googleUser) {
 function signOut() {
   const auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
-    console.log('User signed out.');
     logout();
   });
 }
