@@ -38,6 +38,14 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             msg: 'Date tidak boleh kosong',
           },
+          isAfter: {
+            args: '2020-04-13',
+            msg: 'Tidak boleh hari sebelum dari hari ini!',
+          },
+          isBefore: {
+            args: '2020-12-30',
+            msg: 'Tahun ini aja bolehnya',
+          },
         },
       },
       UserId: {

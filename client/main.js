@@ -48,9 +48,13 @@ function holidays() {
 //logout
 function logout() {
   localStorage.clear('token');
+  $('#back-btn').hide();
   $('#register').hide();
+  $('#button-register').show();
+  $('#Holidays-btn').hide();
   $('#login').show();
   $('#login-btn').hide();
+  $('#logout-btn').hide();
   $('#section-1').show();
   $('#section-2').hide();
   $('#section-3').hide();
@@ -284,15 +288,28 @@ $('#register').submit(function (e) {
 
 // DELETE
 function delList(id) {
-  console.log(id);
-  $.ajax({
-    type: 'DELETE',
-    url: 'http://localhost:3000/todos/' + id,
-    headers: {
-      token: localStorage.getItem('token'),
-    },
-  }).done((response) => {
-    todo(response.message);
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    conole.log(result);
+    $.ajax({
+      type: 'DELETE',
+      url: 'http://localhost:3000/todos/' + id,
+      headers: {
+        token: localStorage.getItem('token'),
+      },
+    }).done((response) => {
+      todo(response.message);
+      if (response.message) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      }
+    });
   });
 }
 
@@ -393,6 +410,6 @@ function signOut() {
   const auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
     console.log('User signed out.');
-    localStorage.clear('token');
+    logout();
   });
 }
