@@ -313,7 +313,6 @@ function delList(id) {
     cancelButtonColor: '#d33',
     confirmButtonText: 'Yes, delete it!',
   }).then((result) => {
-    conole.log(result);
     $.ajax({
       type: 'DELETE',
       url: 'http://localhost:3000/todos/' + id,
@@ -321,10 +320,10 @@ function delList(id) {
         token: localStorage.getItem('token'),
       },
     }).done((response) => {
-      todo(response.message);
       if (response.message) {
         Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
+      location.reload();
     });
   });
 }
