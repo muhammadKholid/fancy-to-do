@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Date tidak boleh kosong',
           },
           isAfter: {
-            args: '2020-04-13',
+            args: date.toISOString().slice(0, 10),
             msg: 'Tidak boleh hari sebelum dari hari ini!',
           },
           isBefore: {
