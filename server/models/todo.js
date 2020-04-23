@@ -1,4 +1,6 @@
 'use strict';
+let date = new Date();
+date.setDate(date.getDate() - 1);
 module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize;
   const Model = Sequelize.Model;
